@@ -12,19 +12,7 @@ namespace HttpListenerExample
         public static string url = "http://localhost:8000/";
         public static int pageViews = 0;
         public static int requestCount = 0;
-        public static string pageData =
-            "<!DOCTYPE>" +
-            "<html>" +
-            "  <head>" +
-            "    <title>HttpListener Example</title>" +
-            "  </head>" +
-            "  <body>" +
-            "    <p>Page Views: {0}</p>" +
-            "    <form method=\"post\" action=\"shutdown\">" +
-            "      <input type=\"submit\" value=\"Shutdown\" {1}>" +
-            "    </form>" +
-            "  </body>" +
-            "</html>";
+        public static string pageData;
 
 
         public static async Task HandleIncomingConnections()
@@ -68,6 +56,8 @@ namespace HttpListenerExample
 
         public static void Main(string[] args)
         {
+            pageData = File.ReadAllText("wwwroot/html/index.htm");
+
             listener = new HttpListener();
             listener.Prefixes.Add(url);
             listener.Start();
