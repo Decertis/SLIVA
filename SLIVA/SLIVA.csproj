@@ -84,10 +84,12 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="wwwroot\html\index.html" />
+    <None Include="wwwroot\css\index.css" />
+    <None Include="wwwroot\scripts\index.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\css\" />
-    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\scripts\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
