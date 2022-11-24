@@ -1,10 +1,8 @@
 ﻿<Properties StartupConfiguration="{693C38ED-E49D-4CBF-BAA0-805533CF6709}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SLIVA/wwwroot/css/index.css">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SLIVA/Program.cs">
     <Files>
       <File FileName="SLIVA/Program.cs" Line="1" Column="1" />
       <File FileName="SLIVA/wwwroot/html/index.html" Line="3" Column="7" />
-      <File FileName="SLIVA/wwwroot/scripts/index.js" Line="1" Column="1" />
-      <File FileName="SLIVA/wwwroot/css/index.css" Line="1" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,11 +18,6 @@
               </Node>
             </Node>
           </Node>
-        </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State name="__root__">
-          <Node name="SLIVA" selected="True" />
         </State>
       </Pad>
     </Pads>
