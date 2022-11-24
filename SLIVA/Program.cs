@@ -9,11 +9,11 @@ namespace HttpListenerExample
     //is is a feature branch
     class HttpServer
     {
-        public static HttpListener listener;
-        public static string url = "http://localhost:8000/";
-        public static int pageViews = 0;
-        public static int requestCount = 0;
-        public static string pageData;
+        static HttpListener listener;
+        static string url = "http://localhost:8000/";
+        static int pageViews = 0;
+        static int requestCount = 0;
+        static string pageData;
 
 
         public static async Task HandleIncomingConnections()
@@ -22,35 +22,35 @@ namespace HttpListenerExample
 
             while (runServer)
             {
-                HttpListenerContext ctx = await listener.GetContextAsync();
+                HttpListenerContext _context = await listener.GetContextAsync();
 
-                HttpListenerRequest req = ctx.Request;
-                HttpListenerResponse resp = ctx.Response;
+                HttpListenerRequest _request = _context.Request;
+                HttpListenerResponse _response = _context.Response;
 
                 Console.WriteLine("Request #: {0}", ++requestCount);
-                Console.WriteLine(req.Url.ToString());
-                Console.WriteLine(req.HttpMethod);
-                Console.WriteLine(req.UserHostName);
-                Console.WriteLine(req.UserAgent);
+                Console.WriteLine(_request.Url.ToString());
+                Console.WriteLine(_request.HttpMethod);
+                Console.WriteLine(_request.UserHostName);
+                Console.WriteLine(_request.UserAgent);
                 Console.WriteLine();
 
-                if ((req.HttpMethod == "POST") && (req.Url.AbsolutePath == "/shutdown"))
+                if ((_request.HttpMethod == "POST") && (_request.Url.AbsolutePath == "/shutdown"))
                 {
                     Console.WriteLine("Shutdown requested");
                     runServer = false;
                 }
 
-                if (req.Url.AbsolutePath != "/favicon.ico")
+                if (_request.Url.AbsolutePath != "/favicon.ico")
                     pageViews += 1;
                     
                 string disableSubmit = !runServer ? "disabled" : "";
                 byte[] data = Encoding.UTF8.GetBytes(String.Format(pageData, pageViews, disableSubmit));
-                resp.ContentType = "text/html";
-                resp.ContentEncoding = Encoding.UTF8;
-                resp.ContentLength64 = data.LongLength;
+                _response.ContentType = "text/html";
+                _response.ContentEncoding = Encoding.UTF8;
+                _response.ContentLength64 = data.LongLength;
 
-                await resp.OutputStream.WriteAsync(data, 0, data.Length);
-                resp.Close();
+                await _response.OutputStream.WriteAsync(data, 0, data.Length);
+                _response.Close();
             }
         }
 
