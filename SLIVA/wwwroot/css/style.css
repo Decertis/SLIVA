@@ -48,17 +48,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header__logo {
-	font-size: 30px;
+	font-size: 60px;
 	font-weight: 700;
 	color: darkgreen;
 }
 
-/* Nav */
+/* Navigation */
 .nav {
 	font-size: 14px;
 }
 
 .nav__link {
+	font-size: 25px;
 	display: inline-block;
 	vertical-align: top;
 	margin: 0 10px;
@@ -79,4 +80,106 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav__link:hover {
 	color: darkgreen;
+}
+
+/* Block */
+
+div.content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	left: 770px;
+	top: 300px;
+	height: 500px;
+	width: 500px;
+	float: left;
+}
+
+div#first {
+	background-color: darkgreen;
+}
+
+div#second {
+	background-color: darkblue;
+}
+
+/* Zaqolowok */
+
+.zagolowok {
+	position: relative;
+	color: black;
+	left: 130px;
+	top: 280px;
+}
+
+.welcome {
+	color: #fff;
+	margin: 20px;
+	position: relative;
+	bottom: 200px;
+}
+
+/* Password link */
+
+.pass__link {
+	font-size: 15px;
+	display: inline-block;
+	vertical-align: top;
+	margin: 0;
+	color: #333;
+	text-decoration: none;
+	position: relative;
+	top: 80px;
+	right: 235px;
+	transition: color 0.2s linear;
+}
+
+.pass__link:after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 3px;
+	background-color: #fff;
+	position: absolute;
+}
+
+.pass__link:hover {
+	color: #fff;
+}
+
+
+/* Button */
+
+.signup {
+	font-size: 40px;
+	position: relative;
+	color: #fff;
+	right: 210px;
+	top: 350px;
+	margin: 20px;
+}
+
+.knopka {
+	height: 40px;
+	width: 225px;
+	font-size: 30px;
+	display: inline-block;
+	vertical-align: top;
+	margin: 0;
+	background-color: #ffb95f;
+	transition: color 0.2s linear;
+}
+
+.knopka:after {
+	content: "";
+	display: block;
+	width: 100%;
+	background-color: #fff;
+	position: absolute;
+}
+
+.knopka:hover {
+	color: #fff;
+	background-color: #333;
 }
