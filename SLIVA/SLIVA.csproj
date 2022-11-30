@@ -80,16 +80,20 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Data\MySqlManager.cs" />
+    <Compile Include="Models\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="wwwroot\html\index.html" />
-    <None Include="wwwroot\css\index.css" />
     <None Include="wwwroot\scripts\index.js" />
+    <None Include="wwwroot\html\index.html" />
+    <None Include="wwwroot\css\style.css" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\scripts\" />
+    <Folder Include="Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

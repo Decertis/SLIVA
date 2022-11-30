@@ -3,8 +3,10 @@ using System.IO;
 using System.Text;
 using System.Net;
 using System.Threading.Tasks;
-
-namespace HttpListenerExample
+using SLIVA.Models;
+using SLIVA.Data;
+using Newtonsoft.Json;
+namespace Program
 {
     //it is master branch
     class HttpServer
@@ -57,6 +59,24 @@ namespace HttpListenerExample
 
         public static void Main(string[] args)
         {
+              var authenticationData = new UserAuthenticationData()
+              {
+                  Login = "decertis",
+                  Password = "55665566"
+              };
+            if (MySqlManager.UserExists(authenticationData.Login))
+            {
+                User user = MySqlManager.GetUser(authenticationData);
+                if (user != null)
+                {
+                    Console.WriteLine($"Username : {user.Username}");
+                }
+                else
+                    Console.WriteLine("Wrong password");
+            }
+            else
+                Console.WriteLine("Wrong login");
+
             pageData = File.ReadAllText("wwwroot/html/index.htm");
 
             listener = new HttpListener();
