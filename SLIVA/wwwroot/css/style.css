@@ -1,203 +1,190 @@
-body {
-	width: 100vw;
-  	height: 100vh;
-	margin: 0;
-	display: flex;
-	background-color:white;
- 	justify-content: center;
-  	align-items: center;
- 	font-size: 30px;
- 	line-height: 1.2;
- 	transform: scale()
- 	font-size: min(1vw, 1.778vh);
-}
-h1 {
-	color: darkgreen;
-}
-*,
-*:before,
-*:after {
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
+* {
 	box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	margin: 0;
+html {
+	height: 100%;
 }
 
-/* Container */
-.container {
+body {
+	height: 100%;
+	display: grid;
+	place-items: center;
+	margin: 0 32px;
+	background: #DAD7CD;
+	font-family: "Ubuntu";
+	animation: rotate 6s infinie alternate linear;
+}
+
+.circle {
+	position: fixed;
+	top: -50vmin;
+	left: -50vmin;
+	width: 100vmin;
+	height: 100vmin;
+	border-radius: 47% 53% 61% 39% / 45% 51% 49% 55%;
+	background: #3a5a40;
+}
+
+.circle::after {
+	content: "";
+	position: inherit;
+	right: -50vmin;
+	bottom: -55vmin;
+	width: inherit;
+	height: inherit;
+	border-radius: inherit;
+	background: #344E41;
+}
+
+.card {
+	position: relative;
+	overflow: hidden;
+	z-index: 3;
 	width: 100%;
-	max-width: 1200px;
-	margin: 0 auto;
+	margin: 0 20px;
+	padding: 160px 30px 38px;
+	border-radius: 1.25rem;
+	background: #588157;
+	text-align: center;
+	box-shadow: 0 100px 100px rgba(0  0  0 / 20%);
 }
 
-/* Intro */
-.intro {
-	width: 100%;
-	height: 100vh;
-}
-
-/* Header */
-.header {
-	padding-top: 30px;
+.card::before {
+	content: "";
 	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 1000;
-	width: 100%;
+	background: #a3b18a;
+	top: -880px;
+	left: 50%;
+	width: 1000px;
+	height: 1000px;
+	border-radius: 50%;
+	translate: -50% 0;
 }
 
-.header__inner {
+.card .logo {
+	position: absolute;
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background: #588157;
+	height: 64px;
+	width: 64px;
+	top: 30px;
+	left: 50%;
+	translate: -50% 0;
 }
 
-.header__logo {
-	font-size: 60px;
-	font-weight: 700;
-	color: darkgreen;
+.card .logo i {
+	font-size: 50px;
+	color: #a3b18a;
+	font-weight: 500;
 }
 
-/* Navigation */
-.nav {
-	font-size: 14px;
-}
-
-.nav__link {
+.card>h2 {
 	font-size: 25px;
-	display: inline-block;
-	vertical-align: top;
-	margin: 0 10px;
-	color: #333;
-	text-decoration: none;
-	position: relative;
-	transition: color 0.2s linear;
+	font-weight: 400;
+	margin: 0 0 30px;
+	color: #DAD7CD;
 }
 
-.nav__link:after {
-	content: "";
-	display: block;
+.form {
+	margin: 0 0 30px;
+	display: grid;
+	gap: 12px;
+}
+
+.form>input, .form>button {
 	width: 100%;
-	height: 3px;
-	background-color: darkgreen;
-	position: absolute;
+	height: 50px;
+	border-radius: 25px;
 }
 
-.nav__link:hover {
-	color: darkgreen;
+.form>input {
+	border: 2px solid #DAD7CD;
+	font-family: inherit;
+	font-size: 16px;
+	padding: 0 24px;
+	color: #DAD7CD;
+	translate: all 0.375s;
+	background: #a3b18a;
 }
 
-/* Block */
-
-div.content {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	position: relative;
-	left: 180px;
-	top: 0px;
-	height: 500px;
-	width: 500px;
+.form>input:hover {
+	border: 2px solid #DAD7CD;
 }
 
-div#first {
-	background-color: darkgreen;
+.form>input::placeholder {
+	color: #DAD7CD;
 }
 
-div#second {
-	background-color: darkblue;
-}
-
-/* Zaqolowok */
-
-.zagolowok {
-	position: relative;
-	color: black;
-	left: 300px;
-	bottom: 300px;
-}
-
-.welcome {
-	color: #fff;
-	margin: 20px;
-	position: relative;
-	bottom: 200px;
-}
-
-/* Password link */
-
-.pass__link {
-	font-size: 15px;
-	display: inline-block;
-	vertical-align: top;
-	margin: 0;
-	color: #333;
-	text-decoration: none;
-	position: relative;
-	top: 80px;
-	right: 235px;
-	transition: color 0.2s linear;
-}
-
-.pass__link:after {
-	content: "";
-	display: block;
+.form>button {
+	cursor: pointer;
 	width: 100%;
-	height: 3px;
-	background-color: #fff;
-	position: absolute;
+	height: 50px;
+	padding: 0 16px;
+	background: #a3b18a;
+	color: #DAD7CD;
+	border: 0;
+	font-family: inherit;
+	font-size: 1rem;
+	font-weight: 600;
+	text-align: center;
+	letter-spacing: 2px;
+	transition: all 0.375s;
 }
 
-.pass__link:hover {
-	color: #fff;
+.form>button:hover {
+	color: #DAD7CD;
+	background: #344E41;
 }
 
-
-/* Button */
-
-.signup {
-	font-size: 40px;
-	position: relative;
-	color: #fff;
-	right: 800px;
-	top: 0px;
-	margin: 20px;
+.card>footer {
+	color: #DAD7CD;
 }
 
-.knopka {
-	height: 40px;
-	width: 225px;
-	font-size: 30px;
-	display: inline-block;
-	vertical-align: top;
-	margin: 0;
-	background-color: #ffb95f;
-	transition: color 0.2s linear;
+.card>footer>a {
+	color: #DAD7CD;
+	transition: all 0.375s;
 }
 
-.knopka:after {
-	content: "";
-	display: block;
-	width: 100%;
-	background-color: #fff;
-	position: absolute;
+.card>footer>a:hover {
+	color: #344E41;
 }
 
-.knopka:hover {
-	color: #fff;
-	background-color: #333;
+@media (width >=500px) {
+	body {
+		padding: 0;
+	}
+	
+	.card {
+		margin: 0;
+		width: 360px;
+	}
+
 }
 
-.hz {
-	width: 100vw;
-  	height: 100vh;
-	margin: 0;
-	display: flex;
-	background-color:white;
- 	justify-content: center;
-  	align-items: center;
- 	font-size: 30px;
- 	line-height: 1.2;
+.circle {
+  animation-name: example;
+  animation-duration: 5s;
+}
+
+@keyframes example {
+  0%   {background-color:#3a5a40; left:-100vmin; top:-100vmin;}
+  50%  {background-color:#3a5a40; left:-45vmin; top:-45vmin;}
+  100% {background-color:#3a5a40; left:-50vmin; top:-50vmin;}
+}
+
+.circle::after {
+  animation-name: brightcircle;
+  animation-duration: 6s;
+}
+
+@keyframes brightcircle {
+  0%   {background-color:#344E41; right:-100vmin; bottom:-100vmin;}
+  50%  {background-color:#344E41; right:-45vmin; bottom:-50vmin;}
+  100% {background-color:#344E41; right:-50vmin; bottom:-55vmin;}
 }
