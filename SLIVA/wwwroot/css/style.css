@@ -39,6 +39,28 @@ body {
 	background: #344E41;
 }
 
+.circle {
+  animation-name: example;
+  animation-duration: 5s;
+}
+
+@keyframes example {
+  0%   {background-color:#3a5a40; left:-100vmin; top:-100vmin;}
+  50%  {background-color:#3a5a40; left:-45vmin; top:-45vmin;}
+  100% {background-color:#3a5a40; left:-50vmin; top:-50vmin;}
+}
+
+.circle::after {
+  animation-name: brightcircle;
+  animation-duration: 6s;
+}
+
+@keyframes brightcircle {
+  0%   {background-color:#344E41; right:-100vmin; bottom:-100vmin;}
+  50%  {background-color:#344E41; right:-45vmin; bottom:-50vmin;}
+  100% {background-color:#344E41; right:-50vmin; bottom:-55vmin;}
+}
+
 .card {
 	position: relative;
 	overflow: hidden;
@@ -165,26 +187,4 @@ body {
 		width: 360px;
 	}
 
-}
-
-.circle {
-  animation-name: example;
-  animation-duration: 5s;
-}
-
-@keyframes example {
-  0%   {background-color:#3a5a40; left:-100vmin; top:-100vmin;}
-  50%  {background-color:#3a5a40; left:-45vmin; top:-45vmin;}
-  100% {background-color:#3a5a40; left:-50vmin; top:-50vmin;}
-}
-
-.circle::after {
-  animation-name: brightcircle;
-  animation-duration: 6s;
-}
-
-@keyframes brightcircle {
-  0%   {background-color:#344E41; right:-100vmin; bottom:-100vmin;}
-  50%  {background-color:#344E41; right:-45vmin; bottom:-50vmin;}
-  100% {background-color:#344E41; right:-50vmin; bottom:-55vmin;}
 }
