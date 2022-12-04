@@ -1,11 +1,13 @@
 ﻿using System;
 using MySql.Data.MySqlClient;
 using SLIVA.Models;
+using System.Threading.Tasks;
 namespace SLIVA.Data
 {
-    public static class MySqlManager
+    public class MySqlManager
     {
         static MySqlConnection connection = new MySqlConnection("Server=127.0.0.1;UserId=root;Password=55665566;Database=SLIVA_db;");
+        #region User-related
         public static User GetUser(UserAuthenticationData auth_data)
         {
             connection.Open();
@@ -39,7 +41,7 @@ namespace SLIVA.Data
             return null;
 
         }
-        public static bool UserExists(string login)
+        public bool UserExists(string login)
         {
             connection.Open();
             var command = new MySqlCommand($"SELECT * FROM Users WHERE user_login = '{login}';",connection);
@@ -58,7 +60,79 @@ namespace SLIVA.Data
 
             return false;
         }
+        #endregion
+        #region Client-related
+        public void ConsoleWriteClients()
+        {
+            using (connection)
+            {
+                connection.Open();
 
+                int row_count = Convert.ToInt32(new MySqlCommand("SELECT COUNT(user_id) FROM Users", connection).ExecuteScalar());
+
+                Console.WriteLine("Row amount : " + row_count);
+
+                var command = new MySqlCommand("SELECT * FROM Users", connection);
+                MySqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    for (int i = reader.FieldCount - 1; i > 0; i--)
+                        Console.WriteLine(reader.GetName(i) + " : " + reader[i]);
+                    Console.WriteLine();
+                }
+                connection.Close();
+            }
+        }
+
+        public void InsertClientIpIntoDatabase(byte[] binary_ip)
+        {
+            try
+            {
+                using (connection)
+                {
+                    connection.Open();
+                    var command = new MySqlCommand($"INSERT INTO Clients(IpAddress) VALUES(@binary_ip)", connection);
+                    command.Parameters.Add("@binary_ip", MySqlDbType.Blob).Value = binary_ip;
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+
+            }
+            catch (MySqlException)
+            {
+                connection.Close();
+            }
+        }
+
+        public bool IsDatabaseCointainsClient(byte[] binary_ip)
+        {
+            try
+            {
+                using (connection)
+                {
+                    connection.Open();
+
+                    var command = new MySqlCommand($"SELECT * FROM Clients WHERE IpAddress = @binary_ip;", connection);
+                    command.Parameters.Add("@binary_ip", MySqlDbType.Blob).Value = binary_ip;
+
+                    if (command.ExecuteReader().HasRows)
+                    {
+                        connection.Close();
+                        return true;
+                    }
+                    connection.Close();
+                    return false;
+                }
+            }
+            catch (MySqlException)
+            {
+                connection.Close();
+                return false;
+            }
+        }
+        #endregion
     }
 }
+
 
