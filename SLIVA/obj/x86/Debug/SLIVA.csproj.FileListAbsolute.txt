@@ -31,3 +31,36 @@
 /home/decertis/Projects/C# learning/SLIVA/SLIVA/obj/x86/Debug/SLIVA.csproj.CopyComplete
 /home/decertis/Projects/C# learning/SLIVA/SLIVA/obj/x86/Debug/SLIVA.exe
 /home/decertis/Projects/C# learning/SLIVA/SLIVA/obj/x86/Debug/SLIVA.pdb
+/home/decertis/Projects/SLIVA/SLIVA/obj/x86/Debug/SLIVA.csprojAssemblyReference.cache
+/home/decertis/Projects/SLIVA/SLIVA/obj/x86/Debug/SLIVA.csproj.CoreCompileInputs.cache
+/home/decertis/Projects/SLIVA/SLIVA/obj/x86/Debug/SLIVA.exe
+/home/decertis/Projects/SLIVA/SLIVA/obj/x86/Debug/SLIVA.pdb
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/SLIVA.exe
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/SLIVA.pdb
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/BouncyCastle.Crypto.dll
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/Google.Protobuf.dll
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/K4os.Compression.LZ4.dll
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/K4os.Compression.LZ4.Streams.dll
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/K4os.Hash.xxHash.dll
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/MySql.Data.dll
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/Newtonsoft.Json.dll
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/System.Buffers.dll
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/System.Memory.dll
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/System.Numerics.Vectors.dll
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/System.Reflection.TypeExtensions.dll
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/System.Runtime.CompilerServices.Unsafe.dll
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/ZstdNet.dll
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/BouncyCastle.Crypto.xml
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/System.Buffers.xml
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/System.Numerics.Vectors.xml
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/System.Runtime.CompilerServices.Unsafe.xml
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/System.Memory.xml
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/Google.Protobuf.pdb
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/Google.Protobuf.xml
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/K4os.Compression.LZ4.xml
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/K4os.Hash.xxHash.xml
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/K4os.Compression.LZ4.Streams.xml
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/MySql.Data.xml
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/Newtonsoft.Json.xml
+/home/decertis/Projects/SLIVA/SLIVA/bin/Debug/System.Reflection.TypeExtensions.xml
+/home/decertis/Projects/SLIVA/SLIVA/obj/x86/Debug/SLIVA.csproj.CopyComplete
