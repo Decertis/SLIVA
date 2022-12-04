@@ -1,25 +1,27 @@
 ﻿<Properties StartupConfiguration="{693C38ED-E49D-4CBF-BAA0-805533CF6709}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SLIVA/Controllers/ResourcesController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SLIVA/wwwroot/html/index.html">
     <Files>
       <File FileName="SLIVA/RequestHandler.cs" Line="66" Column="55" />
       <File FileName="SLIVA/Controllers/IndexController.cs" Line="16" Column="68" />
       <File FileName="SLIVA/Models/Client.cs" Line="27" Column="10" />
       <File FileName="SLIVA/Program.cs" Line="58" Column="1" />
-      <File FileName="SLIVA/Controllers/ResourcesController.cs" Line="33" Column="35" />
+      <File FileName="SLIVA/Controllers/ResourcesController.cs" Line="35" Column="36" />
+      <File FileName="SLIVA/wwwroot/css/style.css" Line="1" Column="1" />
+      <File FileName="SLIVA/wwwroot/html/index.html" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="SLIVA" expanded="True">
             <Node name="SLIVA" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="ResourcesController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
-                <Node name="html" expanded="True" />
+                <Node name="html" expanded="True">
+                  <Node name="index.html" selected="True" />
+                </Node>
                 <Node name="scripts" expanded="True" />
               </Node>
             </Node>
