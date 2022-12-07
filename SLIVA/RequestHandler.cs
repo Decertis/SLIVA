@@ -27,7 +27,7 @@ namespace SLIVA
             _requested_controller_name = _request_url.Split('/')[1];
 
             if (_request_url.Split('/').Length > 2)
-                _requested_method_name = _request_url.Split('/')[2].Split('?')[0];
+            _requested_method_name = _request_url.Split('/')[2].Split('?')[0];
 
             _controller = GetController();
 
@@ -37,7 +37,8 @@ namespace SLIVA
                 Console.WriteLine($"Default controller : {_controller.GetType().Name}");
             }
 
-            _requested_method = GetRequestedMethod();
+                _requested_method = GetRequestedMethod();
+
 
             if (_requested_method != null)
                 _requested_method.Invoke(_controller, null);
@@ -63,13 +64,15 @@ namespace SLIVA
                 Type controller_type = typeof(Controller).Assembly.GetTypes()
                     .Where(type => !type.IsAbstract && string.Equals(type.Name, _requested_controller_name + "Controller", StringComparison.OrdinalIgnoreCase))
                         .SingleOrDefault();
+                if (controller_type == null)
+                    controller_type = typeof(IndexController);
                 Console.WriteLine($"Controller : {controller_type.Name}");
 
                 return (Controller)Activator.CreateInstance(controller_type, _context);
             }
             catch (Exception ex)
             {
-                if (ex.GetType() != typeof(NullReferenceException))
+                //if (ex.GetType() != typeof(NullReferenceException))
                     Console.WriteLine(ex);
 
                 return null;
