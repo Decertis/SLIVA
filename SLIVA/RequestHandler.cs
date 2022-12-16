@@ -22,9 +22,10 @@ namespace SLIVA
 
         public RequestHandler(HttpListenerContext context)
         {
+
             _context = context;
             _request_url = _context.Request.RawUrl;
-            _requested_controller_name = _request_url.Split('/')[1];
+            _requested_controller_name = _context.Request.Url.AbsolutePath.Split('/')[1];
 
             if (_request_url.Split('/').Length > 2)
             _requested_method_name = _request_url.Split('/')[2].Split('?')[0];
@@ -66,13 +67,14 @@ namespace SLIVA
                         .SingleOrDefault();
                 if (controller_type == null)
                     controller_type = typeof(IndexController);
+
                 Console.WriteLine($"Controller : {controller_type.Name}");
 
                 return (Controller)Activator.CreateInstance(controller_type, _context);
             }
             catch (Exception ex)
             {
-                //if (ex.GetType() != typeof(NullReferenceException))
+                if (ex.GetType() != typeof(NullReferenceException))
                     Console.WriteLine(ex);
 
                 return null;

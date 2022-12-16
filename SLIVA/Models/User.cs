@@ -2,11 +2,6 @@
 using SLIVA.Data;
 namespace SLIVA.Models
 {
-    public class UserAuthenticationData
-    {
-        public string Login;
-        public string Password;
-    }
     public class User
     {
         public string Username;

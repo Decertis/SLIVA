@@ -1,13 +1,24 @@
 ﻿<Properties StartupConfiguration="{693C38ED-E49D-4CBF-BAA0-805533CF6709}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SLIVA/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SLIVA/Models/UserRegistrationData.cs">
     <Files>
-      <File FileName="SLIVA/RequestHandler.cs" Line="32" Column="43" />
-      <File FileName="SLIVA/Controllers/IndexController.cs" Line="16" Column="68" />
-      <File FileName="SLIVA/Models/Client.cs" Line="27" Column="10" />
-      <File FileName="SLIVA/Program.cs" Line="42" Column="3" />
-      <File FileName="SLIVA/Controllers/ResourcesController.cs" Line="15" Column="30" />
-      <File FileName="SLIVA/wwwroot/css/style.css" Line="1" Column="1" />
-      <File FileName="SLIVA/wwwroot/html/index.html" Line="8" Column="12" />
+      <File FileName="SLIVA/Program.cs" Line="55" Column="6" />
+      <File FileName="SLIVA/Views/Page.cs" Line="27" Column="56" />
+      <File FileName="SLIVA/Data/MySqlManager.cs" Line="109" Column="28" />
+      <File FileName="SLIVA/RequestHandler.cs" Line="76" Column="14" />
+      <File FileName="SLIVA/Models/User.cs" Line="5" Column="1" />
+      <File FileName="SLIVA/Controllers/Controller.cs" Line="25" Column="73" />
+      <File FileName="SLIVA/Controllers/IndexController.cs" Line="1" Column="1" />
+      <File FileName="SLIVA/Controllers/AuthenticationController.cs" Line="30" Column="1" />
+      <File FileName="SLIVA/Models/Client.cs" Line="15" Column="1" />
+      <File FileName="SLIVA/Controllers/LoginController.cs" Line="20" Column="10" />
+      <File FileName="SLIVA/Views/PageManager.cs" Line="1" Column="1" />
+      <File FileName="SLIVA/Controllers/ResourcesController.cs" Line="23" Column="17" />
+      <File FileName="SLIVA/Models/UserAuthenticationData.cs" Line="40" Column="1" />
+      <File FileName="SLIVA/packages.config" Line="1" Column="1" />
+      <File FileName="SLIVA/wwwroot/html/login.html" Line="1" Column="1" />
+      <File FileName="SLIVA/wwwroot/html/index.html" Line="1" Column="1" />
+      <File FileName="SLIVA/Controllers/RegistrationController.cs" Line="26" Column="6" />
+      <File FileName="SLIVA/Models/UserRegistrationData.cs" Line="37" Column="62" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,13 +27,16 @@
             <Node name="SLIVA" expanded="True">
               <Node name="Controllers" expanded="True" />
               <Node name="Data" expanded="True" />
-              <Node name="Models" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="UserRegistrationData.cs" selected="True" />
+              </Node>
+              <Node name="Properties" expanded="True" />
+              <Node name="Views" expanded="True" />
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
                 <Node name="html" expanded="True" />
                 <Node name="scripts" expanded="True" />
               </Node>
-              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>

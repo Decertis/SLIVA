@@ -88,12 +88,19 @@
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="RequestHandler.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Views\PageManager.cs" />
+    <Compile Include="Views\Page.cs" />
+    <Compile Include="Models\UserAuthenticationData.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Models\UserRegistrationData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="wwwroot\scripts\index.js" />
-    <None Include="wwwroot\html\index.html" />
+    <None Include="wwwroot\html\login.html" />
     <None Include="wwwroot\css\style.css" />
+    <None Include="wwwroot\html\index.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\css\" />
