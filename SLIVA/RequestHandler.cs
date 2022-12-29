@@ -60,6 +60,7 @@ namespace SLIVA
 
         Controller GetController()
         {
+            Console.WriteLine("Get");
             try
             {
                 Type controller_type = typeof(Controller).Assembly.GetTypes()

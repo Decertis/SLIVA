@@ -82,18 +82,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\MySqlManager.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Controllers\Controller.cs" />
-    <Compile Include="Controllers\ResourcesController.cs" />
-    <Compile Include="Controllers\AuthenticationController.cs" />
-    <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="RequestHandler.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Views\PageManager.cs" />
     <Compile Include="Views\Page.cs" />
     <Compile Include="Models\UserAuthenticationData.cs" />
-    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Models\UserRegistrationData.cs" />
+    <Compile Include="Controllers\PullControllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\PullControllers\IndexController.cs" />
+    <Compile Include="Controllers\PullControllers\SignInController.cs" />
+    <Compile Include="Controllers\PullControllers\SignUpController.cs" />
+    <Compile Include="Controllers\PullControllers\ResourcesController.cs" />
+    <Compile Include="Controllers\Controller.cs" />
+    <Compile Include="Controllers\PullControllers\RegistrationController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -101,6 +102,7 @@
     <None Include="wwwroot\html\login.html" />
     <None Include="wwwroot\css\style.css" />
     <None Include="wwwroot\html\index.html" />
+    <None Include="wwwroot\html\registration.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\css\" />
@@ -109,6 +111,7 @@
     <Folder Include="Models\" />
     <Folder Include="Controllers\" />
     <Folder Include="Views\" />
+    <Folder Include="Controllers\PullControllers\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

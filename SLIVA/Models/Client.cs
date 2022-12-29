@@ -6,14 +6,12 @@ namespace SLIVA.Models
     public class Client
     {
         public string Ip;
+        public int Id;
 
-        public Client(MySqlManager mySqlManager, string ip)
+        public Client(string ip, int id)
         {
             Ip = ip;
-            if (!mySqlManager.ClientExists(Ip))
-                mySqlManager.InsertClient(Ip);
-
-
+            Id = id;
         }
 
     }

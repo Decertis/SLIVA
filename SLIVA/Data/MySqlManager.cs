@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using SLIVA.Models;
 using System.Net;
+using System.Security;
 using System.Threading.Tasks;
 using System.Text;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace SLIVA.Data
 {
     public class MySqlManager
     {
-        static MySqlConnection connection = new MySqlConnection("Server=127.0.0.1;UserId=root;Password=55665566;Database=SLIVA_db;");
+        MySqlConnection connection = new MySqlConnection("Server=127.0.0.1;UserId=root;Password=55665566;Database=SLIVA_db;");
         #region User-related
         #region GetUserMethods
-        public User GetUser(UserAuthenticationData auth_data)
+        public User GetUser(UserAuthenticationData auth_data, Client current_client)
         {
             connection.Open();
             var command = new MySqlCommand($"SELECT * FROM Users WHERE user_login = '{auth_data.Login}';", connection);
@@ -36,7 +37,7 @@ namespace SLIVA.Data
                 reader.Close();
                 connection.Close();
 
-                return new User(user_name, user_login, user_password, user_email, user_id);
+                return new User(user_name, user_login, user_password, user_email, user_id, current_client);
             }
 
             reader.Close();
@@ -44,7 +45,7 @@ namespace SLIVA.Data
             return null;
 
         }
-        public User GetUser(string login)
+        public User GetUser(string login, Client current_client)
         {
             connection.Open();
             var command = new MySqlCommand($"SELECT * FROM Users WHERE user_login = '{login}';", connection);
@@ -66,11 +67,11 @@ namespace SLIVA.Data
                 reader.Close();
                 connection.Close();
 
-                return new User(user_name, user_login, user_password, user_email, user_id);
+                return new User(user_name, user_login, user_password, user_email, user_id,current_client);
 
         }
         #endregion GetUserMethods
-        public User RegistrateUser(UserRegistrationData registrationData)
+        public User RegistrateUser(UserRegistrationData registrationData, Client current_client)
         {
             connection.Open();
             var command = new MySqlCommand($"SELECT * FROM Users WHERE user_login = '{registrationData.Login}';", connection);
@@ -92,7 +93,7 @@ namespace SLIVA.Data
             {
                 command.ExecuteNonQuery();
                 connection.Close();
-                return GetUser(registrationData.Login);
+                return GetUser(registrationData.Login, current_client);
             }
             catch(Exception ex)
             {
@@ -154,18 +155,73 @@ namespace SLIVA.Data
             }
         }
 
-        public void CreateSession(User user)
+        public bool SessionExists(Client client)
         {
-            //using (connection)
-            //{
-            //    connection.Open();
-            //    var command = new MySqlCommand($"INSERT INTO Sessions(session_id,user_id,client_id,session_expires,session_expires_at) VALUES('test_ssid1',1,1,1,'2023-10-23 12:45:37.123');", connection);
+            bool result = false;
+            connection.Open();
+            var command = new MySqlCommand($"SELECT * FROM Sessions WHERE client_id = {client.Id};", connection);
 
-            //}
-            Console.WriteLine("Creating session (kinda)");
+            var reader = command.ExecuteReader();
+            reader.Read();
+
+            if (reader.HasRows)
+            {
+                connection.Close();
+                reader.Close();
+                result = true;
+            }
+            reader.Close();
+            connection.Close();
+            Console.WriteLine("session exists : " + result);
+            return result;
+
         }
 
+        public void CreateSession(User user, string sid)
+        {
+
+            if (SessionExists(user.Current_Client))
+                EliminateSessionForClient(user.Current_Client.Id);
+
+                using (connection)
+                {
+
+                    connection.Open();
+                    var command = new MySqlCommand($"INSERT INTO Sessions(session_id,user_id,client_id) VALUES('{sid}',{user.Id},{user.Current_Client.Id});", connection);
+                    command.ExecuteNonQuery();
+                    connection.Close();
+
+                }
+                Console.WriteLine($"Session with {sid} has been created");
+
+
+
+
+            
+        }
+        public void EliminateSessionForClient(int client_id)
+        {
+            
+            using (connection)
+            {
+                connection.Open();
+                var command = new MySqlCommand($"DELETE FROM Sessions WHERE client_id = {client_id};", connection);
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+        public string GenerateSID(User user)
+        {
+            string sid = "SID:" + user.Login + Convert.ToString((user.Id+1419)*DateTime.Now.Second+ user.Login.Length);
+            
+            Console.WriteLine(sid);
+
+
+
+            return sid;
+        }
         #endregion
+
         #region Client-related
         public void ConsoleWriteClients()
         {
@@ -183,7 +239,10 @@ namespace SLIVA.Data
                 while (reader.Read())
                 {
                     for (int i = reader.FieldCount - 1; i > 0; i--)
-                        Console.WriteLine(reader.GetName(i) + " : " + GetIpAddressString((reader[i] as byte[])));
+                    {
+                        Console.WriteLine(reader.GetName(i) + " : " + reader.GetValue(1) );
+
+                    }
                     Console.WriteLine();
                 }
                 reader.Close();
@@ -193,14 +252,13 @@ namespace SLIVA.Data
 
         public void InsertClient(string ip)
         {
+
             try
             {
-                byte[] binary_ip = GetIpAddressBinary(ip);
                 using (connection)
                 {
                     connection.Open();
-                    var command = new MySqlCommand($"INSERT INTO Clients(client_ip) VALUES(@binary_ip)", connection);
-                    command.Parameters.Add("@binary_ip", MySqlDbType.Blob).Value = binary_ip;
+                    var command = new MySqlCommand($"INSERT INTO Clients(client_ip) VALUES(INET_ATON('{ip}'))", connection);
                     command.ExecuteNonQuery();
                     connection.Close();
                 }
@@ -212,54 +270,71 @@ namespace SLIVA.Data
             }
         }
 
-        public bool ClientExists(string ip)
+        public Client GetClient(string ip)
         {
+            Client result = null;
             try
             {
-                byte[] binary_ip = GetIpAddressBinary(ip);
                 using (connection)
                 {
                     connection.Open();
 
-                    var command = new MySqlCommand($"SELECT * FROM Clients WHERE client_ip = @binary_ip;", connection);
-                    command.Parameters.Add("@binary_ip", MySqlDbType.Blob).Value = binary_ip;
+                    var command = new MySqlCommand($"SELECT * FROM Clients WHERE client_ip = INET_ATON('{ip}');", connection);
+                    var reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        result = new Client(ip, reader.GetInt16(0));
+
+
+                        connection.Close();
+                        reader.Close();
+                    }
+                    reader.Close();
+                    connection.Close();
+                    return result;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex);
+                connection.Close();
+                return result;
+            }
+        }
+
+        public bool ClientExists(string ip)
+        {
+            bool result = false;
+            try
+            {
+                using (connection)
+                {
+                    connection.Open();
+                    Console.WriteLine(ip);
+                    var command = new MySqlCommand($"SELECT * FROM Clients WHERE client_ip = INET_ATON('{ip}');", connection);
                     var reader = command.ExecuteReader();
                     if (reader.HasRows)
                     {
                         reader.Close();
                         connection.Close();
-                        return true;
+                        result = true;
                     }
                     reader.Close();
                     connection.Close();
-                    return false;
+                    Console.WriteLine("CLIENT EXISTS : " + result);
+                    return result;
                 }
             }
-            catch (MySqlException)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 connection.Close();
                 return false;
             }
         }
             #endregion
-            private byte[] GetIpAddressBinary(string Ip)
-        {
-            IPAddress IPDec = IPAddress.Parse(Ip);
-            byte[] IPByte = IPDec.GetAddressBytes();
-            return IPByte;
 
-        }
-        private string GetIpAddressString(byte[] binary_ip)
-        {
-            string result = "";
-            foreach (byte b in binary_ip)
-            {
-                result += b + ".";
-            }
-            result = result.TrimEnd(".".ToCharArray());
-            Console.WriteLine(result);
-            return result;
-        }
     }
 }
 

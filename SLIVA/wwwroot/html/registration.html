@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -9,18 +9,25 @@
       <title>SLIVA</title>
 </head>
 <body>    
-
       <div class="circle"></div>
       <div class="card">
             <div class="logo">
                   <i class='bx bx-user-check'></i>
             </div>
             <h2>Welcome to SLIVA</h2>
+            <form class="form">
+                  <input id="u_email" type="email" placeholder="Email">
+                  <input id="u_login" type="text" placeholder="Login">
+                  <input id="u_pwd" type="password" placeholder="Password">
+                  <input id="u_name" type="text" placeholder="Username">
+            </form>
+            <button onclick="SendData()">SIGN UP</button>
             <footer>
                   Existing users, sign in
-                  <a href="#">Here</a>
+                  <a href='/signin'>Here</a>
             </footer>
       </div>
-
+      
+      <script src='/resources/scripts/registration.js'></script>
 </body>
 </html>

@@ -13,7 +13,8 @@ namespace SLIVA
     {
 
         static HttpListener listener;
-        static string url = "http://localhost:8000/";
+        //static string url = "http://localhost:8000/";
+        static string url = "http://192.168.0.10:8000/";
         static int free_connections = 5;
         static bool server_must_stop = false;
 
@@ -44,6 +45,7 @@ namespace SLIVA
             Console.WriteLine(DateTime.UtcNow.ToString("HH:mm:ss.fff") + " Handling request : " + context.Request.Url.AbsolutePath);
             
             RequestHandler requestHandler = new RequestHandler(context);
+
             requestHandler.WriteResponse();
 
             free_connections++;
