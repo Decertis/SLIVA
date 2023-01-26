@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{693C38ED-E49D-4CBF-BAA0-805533CF6709}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="SLIVA/Controllers/Controller.cs">
     <Files>
       <File FileName="SLIVA/Controllers/Controller.cs" Line="27" Column="48" />
       <File FileName="SLIVA/Data/MySqlManager.cs" Line="32" Column="14" />
@@ -12,8 +12,10 @@
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="SLIVA" expanded="True">
-            <Node name="SLIVA" expanded="True" selected="True">
-              <Node name="Controllers" expanded="True" />
+            <Node name="SLIVA" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="Controller.cs" selected="True" />
+              </Node>
               <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
