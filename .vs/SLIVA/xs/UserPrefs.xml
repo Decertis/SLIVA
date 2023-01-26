@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{693C38ED-E49D-4CBF-BAA0-805533CF6709}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SLIVA/Controllers/MessageController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SLIVA/Data/MySqlManager.cs">
     <Files>
       <File FileName="SLIVA/Controllers/Controller.cs" Line="27" Column="48" />
-      <File FileName="SLIVA/Data/MySqlManager.cs" Line="230" Column="21" />
+      <File FileName="SLIVA/Data/MySqlManager.cs" Line="14" Column="75" />
       <File FileName="SLIVA/RequestHandler.cs" Line="75" Column="2" />
       <File FileName="SLIVA/Models/Client.cs" Line="9" Column="1" />
       <File FileName="SLIVA/Program.cs" Line="75" Column="2" />
@@ -12,10 +12,8 @@
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="SLIVA" expanded="True">
-            <Node name="SLIVA" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="MessageController.cs" selected="True" />
-              </Node>
+            <Node name="SLIVA" expanded="True" selected="True">
+              <Node name="Controllers" expanded="True" />
               <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Properties" expanded="True" />
