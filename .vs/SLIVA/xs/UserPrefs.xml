@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="SLIVA/Data/MySqlManager.cs">
     <Files>
       <File FileName="SLIVA/Controllers/Controller.cs" Line="27" Column="48" />
-      <File FileName="SLIVA/Data/MySqlManager.cs" Line="14" Column="75" />
+      <File FileName="SLIVA/Data/MySqlManager.cs" Line="8" Column="19" />
       <File FileName="SLIVA/RequestHandler.cs" Line="75" Column="2" />
       <File FileName="SLIVA/Models/Client.cs" Line="9" Column="1" />
       <File FileName="SLIVA/Program.cs" Line="75" Column="2" />
