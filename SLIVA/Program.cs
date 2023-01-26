@@ -14,7 +14,7 @@ namespace SLIVA
 
         static HttpListener listener;
         //static string url = "http://localhost:8000/";
-        static string url = "http://192.168.0.10:8000/";
+        static string[] prefixes = { "http://localhost:8000/", "http://192.168.0.10:8000/" };
         static int free_connections = 5;
         static bool server_must_stop = false;
 
@@ -23,11 +23,29 @@ namespace SLIVA
             PageManager.Initialize("/home/decertis/Projects/SLIVA/SLIVA/wwwroot/html");
             PageManager.ListPages();
 
-            new MySqlManager().ConsoleWriteClients();
-            new MySqlManager().ConsoleWriteUsers();
+            MySqlManager mySqlManager = new MySqlManager();
+            mySqlManager.ConsoleWriteClients();
+            mySqlManager.ConsoleWriteUsers();
+
+            foreach(Message message in mySqlManager.GetLatestMessages(5))
+            {
+                if(message != null)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Message id : " + message.Id);
+                    Console.WriteLine("Message author_id : " + message.AuthorId);
+                    Console.WriteLine("Message client_id : " + message.ClientId);
+                    Console.WriteLine("Message content_id : " + message.Content);
+                    Console.WriteLine("Message sent_at : " + message.SentAt);
+
+
+                }
+            }
+
 
             listener = new HttpListener();
-            listener.Prefixes.Add(url);
+            listener.Prefixes.Add(prefixes[0]);
+            listener.Prefixes.Add(prefixes[1]); 
             listener.Start();
             while (server_must_stop == false)
             {
@@ -41,9 +59,8 @@ namespace SLIVA
         public static void TakeRequest(IAsyncResult ar)
         {
             var context = listener.EndGetContext(ar);
-            listener.BeginGetContext(TakeRequest, null);
             Console.WriteLine(DateTime.UtcNow.ToString("HH:mm:ss.fff") + " Handling request : " + context.Request.Url.AbsolutePath);
-            
+
             RequestHandler requestHandler = new RequestHandler(context);
 
             requestHandler.WriteResponse();

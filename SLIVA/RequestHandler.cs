@@ -44,14 +44,15 @@ namespace SLIVA
             if (_requested_method != null)
                 _requested_method.Invoke(_controller, null);
 
-            _response = _controller.GenerateHttpListenerResponse();
             _response_content = _controller.GenerateResponseContent();
+            _response = _controller.GenerateHttpListenerResponse();
 
         }
 
 
-       public async Task WriteResponse()
+       public async void WriteResponse()
         {
+            Console.WriteLine(_response.ContentType);
             using (Stream output = _response.OutputStream)
             {
                 await output.WriteAsync(_response_content, 0, _response_content.Length);
@@ -60,14 +61,14 @@ namespace SLIVA
 
         Controller GetController()
         {
-            Console.WriteLine("Get");
+           
             try
             {
                 Type controller_type = typeof(Controller).Assembly.GetTypes()
                     .Where(type => !type.IsAbstract && string.Equals(type.Name, _requested_controller_name + "Controller", StringComparison.OrdinalIgnoreCase))
                         .SingleOrDefault();
                 if (controller_type == null)
-                    controller_type = typeof(IndexController);
+                    controller_type = typeof(ForumController);
 
                 Console.WriteLine($"Controller : {controller_type.Name}");
 

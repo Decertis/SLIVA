@@ -87,14 +87,23 @@
     <Compile Include="Views\PageManager.cs" />
     <Compile Include="Views\Page.cs" />
     <Compile Include="Models\UserAuthenticationData.cs" />
-    <Compile Include="Models\UserRegistrationData.cs" />
-    <Compile Include="Controllers\PullControllers\AuthenticationController.cs" />
-    <Compile Include="Controllers\PullControllers\IndexController.cs" />
-    <Compile Include="Controllers\PullControllers\SignInController.cs" />
-    <Compile Include="Controllers\PullControllers\SignUpController.cs" />
-    <Compile Include="Controllers\PullControllers\ResourcesController.cs" />
+    <Compile Include="Models\UserRegistrationRequest.cs" />
     <Compile Include="Controllers\Controller.cs" />
-    <Compile Include="Controllers\PullControllers\RegistrationController.cs" />
+    <Compile Include="Models\UserRegistrationStatus.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Controllers\ResourcesController.cs" />
+    <Compile Include="Controllers\SignInController.cs" />
+    <Compile Include="Controllers\SignUpController.cs" />
+    <Compile Include="Models\MessageSendingStatus.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Controllers\ForumController.cs" />
+    <Compile Include="Models\MessagePostRequest.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Models\MessagesUpdateRequest.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Models\MessageUpdateResonse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -111,7 +120,6 @@
     <Folder Include="Models\" />
     <Folder Include="Controllers\" />
     <Folder Include="Views\" />
-    <Folder Include="Controllers\PullControllers\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -71,7 +71,7 @@ body {
     border-radius: 1.25rem;
     background: #588157;
     text-align: center;
-    box-shadow: 0 100px 100px rgba(0  0  0 / 20%);
+    box-shadow: 0 100px 100px rgba(0  0  0 / 30%);
 }
 
 .card::before {
@@ -159,7 +159,7 @@ button {
     transition: all 0.375s;
 }
 
-.form>button:hover {
+button:hover {
     color: #DAD7CD;
     background: #344E41;
 }

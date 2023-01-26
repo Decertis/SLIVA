@@ -1,15 +1,12 @@
 ﻿<Properties StartupConfiguration="{693C38ED-E49D-4CBF-BAA0-805533CF6709}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SLIVA/Controllers/Controller.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SLIVA/Controllers/MessageController.cs">
     <Files>
-      <File FileName="SLIVA/Data/MySqlManager.cs" Line="207" Column="35" />
-      <File FileName="SLIVA/Controllers/PullControllers/AuthenticationController.cs" Line="24" Column="14" />
-      <File FileName="SLIVA/Models/Client.cs" Line="14" Column="21" />
-      <File FileName="SLIVA/Controllers/Controller.cs" Line="17" Column="40" />
-      <File FileName="SLIVA/Models/User.cs" Line="21" Column="44" />
-      <File FileName="SLIVA/Controllers/PullControllers/ResourcesController.cs" Line="1" Column="1" />
-      <File FileName="SLIVA/Controllers/PullControllers/RegistrationController.cs" Line="26" Column="65" />
-      <File FileName="SLIVA/Program.cs" Line="16" Column="56" />
-      <File FileName="SLIVA/Controllers/PullControllers/SignUpController.cs" Line="1" Column="1" />
+      <File FileName="SLIVA/Controllers/Controller.cs" Line="27" Column="48" />
+      <File FileName="SLIVA/Data/MySqlManager.cs" Line="230" Column="21" />
+      <File FileName="SLIVA/RequestHandler.cs" Line="75" Column="2" />
+      <File FileName="SLIVA/Models/Client.cs" Line="9" Column="1" />
+      <File FileName="SLIVA/Program.cs" Line="75" Column="2" />
+      <File FileName="SLIVA/Controllers/MessageController.cs" Line="46" Column="37" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,8 +14,7 @@
           <Node name="SLIVA" expanded="True">
             <Node name="SLIVA" expanded="True">
               <Node name="Controllers" expanded="True">
-                <Node name="PullControllers" expanded="True" />
-                <Node name="Controller.cs" selected="True" />
+                <Node name="MessageController.cs" selected="True" />
               </Node>
               <Node name="Data" expanded="True" />
               <Node name="Models" expanded="True" />

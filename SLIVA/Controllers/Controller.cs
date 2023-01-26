@@ -10,14 +10,24 @@ public abstract class Controller
     protected HttpListenerContext _context;
     protected MySqlManager mySqlManager;
     protected Client client;
+    protected HttpListenerResponse _response;
     public Controller(HttpListenerContext context)
     {
         mySqlManager = new MySqlManager();
         this._context = context;
-        string trimed_ip = _context.Request.RemoteEndPoint.ToString().Split(':')[0];
-        if (!mySqlManager.ClientExists(trimed_ip))
-            mySqlManager.InsertClient(trimed_ip);
-        client = mySqlManager.GetClient(trimed_ip);
+        string trimed_ip = _context.Request.RemoteEndPoint.Address.ToString();
+        if (trimed_ip == "::1")
+            trimed_ip = _context.Request.Headers["x-forwarded-for"];
+
+
+        if(trimed_ip != null)
+        {
+            if (!mySqlManager.ClientExists(trimed_ip))
+                mySqlManager.InsertClient(trimed_ip);
+            client = mySqlManager.GetClientByIp(trimed_ip);
+            Console.WriteLine("Client id : " + client.Id);
+        }
+
     }
     public virtual HttpListenerResponse GenerateHttpListenerResponse()
     {

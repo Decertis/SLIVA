@@ -3,7 +3,8 @@ function SendData(){
     var u_login  = document.getElementById('u_login').value;
     console.log(u_login);
     console.log(u_pwd);
-    fetch('http://localhost:8000/authentication', {
+    var http_response;
+    fetch('/authentication', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -12,6 +13,12 @@ function SendData(){
     body: JSON.stringify({'Login': u_login,'Password':u_pwd })
     })
     .then(response => response.json())
-    .then(response => console.log(JSON.stringify(response)))
-    
+    .then(response => {
+        let res = JSON.stringify(response).replaceAll('"','');
+        console.log(res);
+        console.log(res.toLocaleLowerCase() === "succes");
+        if(res.toLowerCase() === 'succes')
+            document.location.href = '/forum';
+            
+    })
 }
